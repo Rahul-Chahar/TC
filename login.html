@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Custom CSS -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+        }
+
+        .navbar {
+            background-color: #343a40 !important;
+        }
+
+        .navbar-brand {
+            color: #ffffff !important;
+        }
+        .container{
+            border-radius: 50px;
+        }
+
+        .login-container {
+            margin-top: 50px;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px; 
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .carousel-container {
+            text-align: center; /* Center all elements inside carousel-container */
+            border-radius: 8px; /* Rounded corners */
+            overflow: hidden; /* Hide overflowing content */
+        }
+
+        .carousel-inner {
+            border-radius: 8px; /* Rounded corners for carousel images */
+        }
+
+        .footer {
+            background-color: #343a40;
+            color: #ffffff;
+            text-align: center;
+            padding: 20px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container">
+        <a class="navbar-brand" href="#">Your Brand</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="aboutUs.html">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="contactUs.html">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="carousel-container">
+                <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="https://via.placeholder.com/600x200" class="d-block w-100" alt="...">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="https://via.placeholder.com/600x200" class="d-block w-100" alt="...">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="https://via.placeholder.com/600x200" class="d-block w-100" alt="...">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="login-container">
+                <h2 class="text-center">Login</h2>
+                <div class="form-group">
+                    <label for="loginOption">Choose login method:</label>
+                    <select class="form-control" id="loginOption">
+                        <option value="phone">Login with Phone</option>
+                        <option value="email">Login with Email</option>
+                    </select>
+                </div>
+                <div id="phoneLogin" class="form-group">
+                    <label for="phoneNumber">Phone Number:</label>
+                    <input type="tel" class="form-control" id="phoneNumber" placeholder="Enter phone number">
+                </div>
+                <div id="otpLogin" class="form-group" style="display: none;">
+                    <label for="otp">Enter OTP:</label>
+                    <input type="text" class="form-control" id="otp" placeholder="Enter OTP">
+                </div>
+                <div id="emailLogin" class="form-group" style="display: none;">
+                    <label for="email">Email address:</label>
+                    <input type="email" class="form-control" id="email" placeholder="Enter email">
+                </div>
+                <div id="passwordLogin" class="form-group" style="display: none;">
+                    <label for="password">Password:</label>
+                    <input type="password" class="form-control" id="password" placeholder="Enter password">
+                </div>
+                <button id="loginButton" class="btn btn-primary btn-block">Login</button>
+                <button id="otpButton" class="btn btn-secondary btn-block" style="display: none;">Request OTP</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer class="footer">
+    <div class="container">
+        <span>&copy; 2024 Your Company</span>
+    </div>
+</footer>
+
+<!-- jQuery and Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script>
+    // JavaScript to toggle between phone and email login
+    $(document).ready(function () {
+        $('#loginOption').change(function () {
+            var selectedOption = $(this).val();
+            if (selectedOption === 'phone') {
+                $('#phoneLogin').show();
+                $('#otpLogin').hide();
+                $('#emailLogin').hide();
+                $('#passwordLogin').hide();
+                $('#otpButton').show();
+            } else if (selectedOption === 'email') {
+                $('#phoneLogin').hide();
+                $('#otpLogin').hide();
+                $('#emailLogin').show();
+                $('#passwordLogin').show();
+                $('#otpButton').hide();
+            }
+        });
+
+        // Request OTP button click event
+        $('#otpButton').click(function () {
+            // Perform logic to request OTP
+            // For demonstration purposes, we'll just show the OTP input field
+            $('#phoneLogin').hide();
+            $('#otpLogin').show();
+            $('#otpButton').hide();
+        });
+    });
+</script>
+
+</body>
+</html>
